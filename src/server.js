@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import cors from "cors";
 import morgan from "morgan";
-import medicineRouter from './server/routers/medicineRouter';
+import convertRouter from './server/routers/convertRouter';
 
 const app = express();
 const port = 8080;
@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, '../build/index.html'));
 });
 
-app.use("/medicine", medicineRouter);
+app.use("/convert", convertRouter);
 
 
 app.listen(port, () => {
