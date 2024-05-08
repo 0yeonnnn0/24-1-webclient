@@ -1,6 +1,9 @@
 import { updatePassword } from "firebase/auth";
+import { useState } from "react";
 
-function ChangePW({ user, newPassword, setNewPassword }) {
+function ChangePW({ user }) {
+  const [newPassword, setNewPassword] = useState("");
+
   const handleNewPassword = async () => {
     // 🔥 6
     try {
@@ -15,15 +18,23 @@ function ChangePW({ user, newPassword, setNewPassword }) {
   };
 
   return (
-    <div>
-      <h4>Change Password</h4>
-      <input
-        placeholder="NewPassword..."
-        onChange={(event) => {
-          setNewPassword(event.target.value);
-        }}
-      />
-      <button onClick={handleNewPassword}> New Password </button>
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="mt-10 p-10 flex justify-center">
+        <span>Change Password</span>
+        <input
+          className="border rounded-lg border-gray-300 p-2 h-10"
+          onChange={(event) => {
+            setNewPassword(event.target.value);
+          }}
+        />
+        <button
+          onClick={handleNewPassword}
+          className="bg-green-800 text-base font-semibold hover:bg-green-600 h-10 border border-bg-green-950 rounded text-white"
+        >
+          {" "}
+          New Password{" "}
+        </button>
+      </div>
     </div>
   );
 }

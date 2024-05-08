@@ -1,16 +1,18 @@
 import { useState } from "react";
 import ConvertBtn from "../components/ConvertBtn";
 import gptFunc2NameAPI from "../apis/gptAPIs";
+import { PageName } from "../components/PageName";
 
 function Func2Name() {
   let [input, setInput] = useState("");
   let [result, setResult] = useState();
 
   return (
-    <div className="bg-white py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="bg-white py-5">
+      <div className="mx-auto max-w-7xl px-6">
         <div className="p-2 w-full flex-shrink-0">
-          <div className="Func2Name rounded-2xl bg-gray-800 text-gray-400 p-10 text-center ring-1 ring-inset ring-gray-900/5 justify-center font-bold">
+          <PageName PageName={"Func2Name"} />
+          <div className="Func2Name rounded-2xl mt-5 bg-gray-800 text-gray-400 p-10 text-center ring-1 ring-inset ring-gray-900/5 justify-center font-bold">
             <FuncInput input={input} setInput={setInput} />
             <ConvertBtn
               input={input}

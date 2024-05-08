@@ -1,9 +1,7 @@
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import { useState } from "react";
 import gptName2FuncAPI from "../apis/gptAPIs";
 import ConvertBtn from "../components/ConvertBtn";
+import { PageName } from "../components/PageName";
 
 function Name2Func() {
   let [inputName, setInputName] = useState("");
@@ -13,10 +11,11 @@ function Name2Func() {
   let [result, setResult] = useState("");
 
   return (
-    <div className="bg-white py-24">
-      <div className="mx-auto mt-4 max-w-4xl rounded-3xl ring-1 ring-gray-200 lg:mx-0 lg:flex lg:max-w-none">
-        <div className="p-2 mt-0 w-full lg:flex-shrink-0">
-          <div className="Name2Func rounded-2xl bg-gray-800 text-gray-400 p-10 text-center ring-1 ring-inset ring-gray-900/5 justify-center font-bold">
+    <div className="bg-white py-5">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="p-2 w-full flex-shrink-0">
+          <PageName PageName={"Name2Func"} />
+          <div className="Name2Func mt-5 rounded-2xl bg-gray-800 text-gray-400 p-10 text-center ring-1 ring-inset ring-gray-900/5 justify-center font-bold">
             <FuncNameInput
               input={inputName}
               setInput={setInputName}
