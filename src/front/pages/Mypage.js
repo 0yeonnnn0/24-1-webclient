@@ -1,7 +1,7 @@
-import { faBookJournalWhills } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { useState } from "react";
 import { PageName } from "../components/PageName";
+import profile from "../assets/Profile1.jpeg";
 
 function Mypage({ user }) {
   return (
@@ -20,7 +20,7 @@ function MyProfile({ user }) {
   return (
     <div className="flex flex-col min-h-screen gap-6 border-r-2 w-64 pr-6">
       <div className="w-52 h-52 bg-cyan-500 rounded-full text-center content-center">
-        여긴 사진이 들어갈것
+        <img src={profile} alt="프로필 사진" />
       </div>
       <div>
         <h3 className="text-3xl font-bold mb-2">{user.username}</h3>

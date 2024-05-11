@@ -1,7 +1,8 @@
 import { useState } from "react";
-import gptName2FuncAPI from "../apis/gptAPIs";
-import ConvertBtn from "../components/ConvertBtn";
+import { gptName2FuncAPI } from "../apis/gptAPIs";
 import { PageName } from "../components/PageName";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 
 function Name2Func() {
   let [inputName, setInputName] = useState("");
@@ -25,15 +26,41 @@ function Name2Func() {
               setInputEtc={setInputEtc}
             />
             <ConvertBtn
-              input={inputName}
+              inputName={inputName}
+              inputFramework={inputFramework}
+              inputEtc={inputEtc}
               setResult={setResult}
-              apiCall={gptName2FuncAPI}
             />
             <FuncOutput result={result} inputName={inputName} />
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function ConvertBtn({ inputName, inputFramework, inputEtc, setResult }) {
+  function getAPI(inputName, inputFramework, inputEtc) {
+    try {
+      let apiResult = gptName2FuncAPI(inputName, inputFramework, inputEtc);
+      apiResult.then((res) => {
+        setResult(res);
+      });
+    } catch {
+      console.error("API 호출 에러");
+    }
+  }
+  return (
+    <button
+      className="w-56 mt-8 rounded-md bg-green-800 px-3.5 py-2.5 text-base font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800"
+      onClick={() => getAPI(inputName, inputFramework, inputEtc)}
+    >
+      <FontAwesomeIcon icon={faArrowDown} className="mr-2" />
+      <FontAwesomeIcon icon={faArrowDown} className="mr-2" />
+      Convert
+      <FontAwesomeIcon icon={faArrowDown} className="ml-2" />
+      <FontAwesomeIcon icon={faArrowDown} className="ml-2" />
+    </button>
   );
 }
 
@@ -60,39 +87,37 @@ function FuncNameInput({
       <div className=" bg-gray-800">
         <InputForm
           title="Function Name"
+          name="name"
           handleChange={handleInputChange}
           inputValue={inputName}
-          placeholder="함수 명"
         />
         <InputForm
           title="Framework"
+          name="framework"
           handleChange={handleInputFrameworkChange}
           inputValue={inputFramework}
-          placeholder="사용 Framework"
         />
         <InputForm
           title="고려사항"
+          name="etc"
           handleChange={setInputEtcChange}
           inputValue={inputEtc}
-          placeholder="기타 고려사항"
         />
       </div>
     </div>
   );
 }
 
-function InputForm({ title, handleChange, inputValue, placeholder }) {
+function InputForm({ title, name, handleChange, inputValue }) {
   return (
     <div className="mt-2 flex place-items-center">
-      <div className="w-32">{title}</div>
+      <div className="min-w-32">{title}</div>
       <input
         type="text"
-        name="price"
-        id="price"
-        className="block rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        name={name}
+        className="block w-1/2 h-9 rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 leading-6"
         onChange={handleChange}
         value={inputValue}
-        placeholder={placeholder}
       />
     </div>
   );
@@ -111,15 +136,14 @@ function FuncOutput({ result, inputName }) {
         </div>
         <div className="flex flex-col items-start justify-start text-3xl mt-1">
           <div className="relative ml-12 mt-2  w-10/12 rounded-md shadow-sm">
-            <textarea
-              type="text"
-              name="price"
-              id="price"
-              className="block w-full min-h-32 rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              placeholder="함수 명을 입력하고 버튼을 누르면 결과가 나옵니다."
-              value={result}
-              readOnly
-            />
+            <pre>
+              <code
+                className="block w-full overflow-x-auto min-h-32 rounded-md border-0 py-1.5 pl-3 pr-3 text-left bg-white text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm leading-6"
+                placeholder="함수 명을 입력하고 버튼을 누르면 결과가 나옵니다."
+              >
+                {result}
+              </code>
+            </pre>
           </div>
           <span className="ml-12 mt-4 text-yellow-500">{`}`}</span>
         </div>

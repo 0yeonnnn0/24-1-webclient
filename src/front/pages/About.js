@@ -1,4 +1,6 @@
 // import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import Func2NameExample from "../assets/Func2NameExample.png";
+import Name2FuncExample from "../assets/Name2FuncExample.png";
 
 function About() {
   return (
@@ -53,46 +55,71 @@ function About() {
         </div>
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <img
-            className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            className=" w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+            src={Func2NameExample}
             alt=""
           />
-        </div>
-        <div className="lg:max-w-lg">
-          <p className="text-base font-semibold leading-7 text-indigo-600">
-            사용 설명
-          </p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Name2Func
-          </h1>
-          <p className="mt-6 text-xl leading-8 text-gray-700">
-            작명은 이미 마쳤다고요? <br />
-            Func2Name은 당신의 함수 명에 걸맞은 코드를 제공합니다.
-          </p>
         </div>
 
         <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <img
             className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            src={Func2NameExample}
             alt=""
           />
         </div>
 
-        <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+        <div className="col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
               <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
-                No server? No problem.
+                함수를 입력하기만 하면 함수명을 추천해드립니다.
               </h2>
-              <p className="mt-6">
-                Id orci tellus laoreet id ac. Dolor, aenean leo, ac etiam
-                consequat in. Convallis arcu ipsum urna nibh. Pharetra, euismod
-                vitae interdum mauris enim, consequat vulputate nibh. Maecenas
-                pellentesque id sed tellus mauris, ultrices mauris. Tincidunt
-                enim cursus ridiculus mi. Pellentesque nam sed nullam sed diam
-                turpis ipsum eu a sed convallis diam.
+              <p className="mt-6">ChatGPT가 추천해주는 함수명을 확인하세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10">
+        <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div className="lg:pr-4">
+            <div className="lg:max-w-lg">
+              <p className="text-base font-semibold leading-7 text-indigo-600">
+                사용 설명
               </p>
+              <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Name2Func
+              </h1>
+              <p className="mt-6 text-xl leading-8 text-gray-700">
+                이름은 이미 지어뒀다고요? <br />
+                Func2Name은 당신에게 필요한 함수도 제공합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+          <img
+            className=" w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+            src={Name2FuncExample}
+            alt="Name2FuncExample"
+          />
+        </div>
+
+        <div className="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+          <img
+            className="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]"
+            src={Name2FuncExample}
+            alt="Name2FuncExample"
+          />
+        </div>
+
+        <div className="col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
+          <div className="lg:pr-4">
+            <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
+              <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
+                함수 명 및 고려사항을 입력하면 함수를 추천해드립니다.
+              </h2>
+              <p className="mt-6">ChatGPT가 추천해주는 함수를 통해 빠른 개발을 경험해 보세요!</p>
             </div>
           </div>
         </div>
