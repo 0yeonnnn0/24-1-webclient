@@ -3,8 +3,9 @@ import { gptName2FuncAPI } from "../apis/gptAPIs";
 import { PageName } from "../components/PageName";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
+import Loading from "../components/Loading";
 
-function Name2Func() {
+function Name2Func({ loading, setLoading }) {
   let [inputName, setInputName] = useState("");
   let [inputFramework, setInputFramework] = useState("");
   let [inputEtc, setInputEtc] = useState("");
@@ -16,6 +17,7 @@ function Name2Func() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="p-2 w-full flex-shrink-0">
           <PageName PageName={"Name2Func"} />
+          {loading && <Loading />}
           <div className="Name2Func mt-5 rounded-2xl bg-gray-800 text-gray-400 p-10 text-center ring-1 ring-inset ring-gray-900/5 justify-center font-bold">
             <FuncNameInput
               input={inputName}
@@ -30,6 +32,7 @@ function Name2Func() {
               inputFramework={inputFramework}
               inputEtc={inputEtc}
               setResult={setResult}
+              setLoading={setLoading}
             />
             <FuncOutput result={result} inputName={inputName} />
           </div>
@@ -39,15 +42,24 @@ function Name2Func() {
   );
 }
 
-function ConvertBtn({ inputName, inputFramework, inputEtc, setResult }) {
+function ConvertBtn({
+  inputName,
+  inputFramework,
+  inputEtc,
+  setResult,
+  setLoading,
+}) {
   function getAPI(inputName, inputFramework, inputEtc) {
+    setLoading(true);
     try {
       let apiResult = gptName2FuncAPI(inputName, inputFramework, inputEtc);
       apiResult.then((res) => {
         setResult(res);
+        setLoading(false);
       });
     } catch {
       console.error("API 호출 에러");
+      setLoading(false);
     }
   }
   return (
@@ -111,7 +123,7 @@ function FuncNameInput({
 function InputForm({ title, name, handleChange, inputValue }) {
   return (
     <div className="mt-2 flex place-items-center">
-      <div className="min-w-32">{title}</div>
+      <div className="min-w-32 text-right pr-5">{title}</div>
       <input
         type="text"
         name={name}

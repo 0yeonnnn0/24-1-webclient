@@ -9,10 +9,6 @@ const port = 8080;
 
 app.use(cors());
 app.use(morgan("dev"));
-// app.use((req, res) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:8080"); // 특정 도메인 허용
-//   res.header("Access-Control-Allow-Origin", "http://functionconverter.duckdns.org"); // 특정 도메인 허용
-// });
 
 app.use(express.static(path.join(__dirname, "../build")));
 

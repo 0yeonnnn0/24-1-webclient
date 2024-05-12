@@ -30,6 +30,7 @@ function UseLocalStorage(key, initialState) {
 
 function App() {
   const [user, setUser] = UseLocalStorage("user");
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="App min-h-screen">
@@ -44,8 +45,8 @@ function App() {
           <Route path="/signup" element={<RegisterUser />} />
 
           <Route path="/about" element={<About />} />
-          <Route path="/func2name" element={<Func2Name />} />
-          <Route path="/name2func" element={<Name2Func />} />
+          <Route path="/func2name" element={<Func2Name loading={loading} setLoading={setLoading}/>} />
+          <Route path="/name2func" element={<Name2Func loading={loading} setLoading={setLoading}/>} />
           <Route path="/convert-log" element={<ConvertLog />} />
 
           <Route path="*" element={<NotFound />} />

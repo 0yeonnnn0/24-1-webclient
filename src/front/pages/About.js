@@ -75,7 +75,10 @@ function About() {
               <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
                 함수를 입력하기만 하면 함수명을 추천해드립니다.
               </h2>
-              <p className="mt-6">ChatGPT가 추천해주는 함수명을 확인하세요.</p>
+              <p className="mt-6">
+                함수를 입력하고, 잠시 기다려주세요! <br />
+                ChatGPT가 추천해주는 함수명을 확인할 수 있습니다.
+              </p>
             </div>
           </div>
         </div>
@@ -119,11 +122,20 @@ function About() {
               <h2 className="mt-16 text-2xl font-bold tracking-tight text-gray-900">
                 함수 명 및 고려사항을 입력하면 함수를 추천해드립니다.
               </h2>
-              <p className="mt-6">ChatGPT가 추천해주는 함수를 통해 빠른 개발을 경험해 보세요!</p>
+              <p className="mt-6">
+                함수 명, 사용하는 프레임워크, 그리고 기타 고려할 사항들을 입력해
+                주세요!
+                <br />
+                당신에게 필요한 기능을 가진 함수를 만들어 드립니다.
+                <br />
+              </p>
             </div>
           </div>
         </div>
       </div>
+      <h2 className="text-center text-2xl font-bold mt-10">
+        삶에 치여 너무 바쁜 당신을 위한 인공지능 코딩 서비스, FunctionConverter.
+      </h2>
     </div>
   );
 }

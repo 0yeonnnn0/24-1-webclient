@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 import { useEffect } from "react";
+import Loading from "../components/Loading";
 
-function Func2Name() {
+function Func2Name({ loading, setLoading }) {
   let [input, setInput] = useState("");
   let [result, setResult] = useState();
 
@@ -15,9 +16,14 @@ function Func2Name() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="p-2 w-full flex-shrink-0">
           <PageName PageName={"Func2Name"} />
+          {loading && <Loading />}
           <div className="Func2Name rounded-2xl mt-5 bg-gray-800 text-gray-400 p-10 text-center ring-1 ring-inset ring-gray-900/5 justify-center font-bold">
             <FuncInput input={input} setInput={setInput} result={result} />
-            <ConvertBtn inputFunction={input} setResult={setResult} />
+            <ConvertBtn
+              inputFunction={input}
+              setResult={setResult}
+              setLoading={setLoading}
+            />
             <FuncNameOutput result={result} />
           </div>
         </div>
@@ -26,12 +32,14 @@ function Func2Name() {
   );
 }
 
-function ConvertBtn({ inputFunction, setResult }) {
+function ConvertBtn({ inputFunction, setResult, setLoading }) {
   function getAPI(inputFunction) {
     try {
+      setLoading(true);
       let apiResult = gptFunc2NameAPI(inputFunction);
       apiResult.then((res) => {
         setResult(res);
+        setLoading(false);
       });
     } catch {
       console.error("API 호출 에러");
@@ -110,6 +118,7 @@ function FuncNameOutput({ result }) {
               className="block min-w-52 max-w-80 w-full rounded-md border-0 py-1.5 pl-3 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-sm leading-6"
               placeholder="결과가 곧 나옵니다."
               value={result}
+              readOnly
             />
           </div>
           <div className="text-3xl mt-1 text-yellow-500">{`() {`}</div>

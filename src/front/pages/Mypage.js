@@ -83,22 +83,22 @@ export function TabComponent({ menuArr = ["All", "Func2Name", "Name2Func"] }) {
 function getData(index) {
   const body = [
     {
-      name: `test${index}`,
+      name: `name2func`,
       client: "dusehd1",
       convert: "n2f",
-      date: "2021-09-09",
+      date: "2024-05-11",
     },
     {
-      name: `test${index}`,
+      name: `convertBtn`,
       client: "dusehd1",
       convert: "n2f",
-      date: "2021-09-09",
+      date: "2024-05-11",
     },
     {
-      name: `test${index}`,
+      name: `test`,
       client: "dusehd1",
       convert: "n2f",
-      date: "2021-09-09",
+      date: "2024-05-10",
     },
   ];
   return body;
